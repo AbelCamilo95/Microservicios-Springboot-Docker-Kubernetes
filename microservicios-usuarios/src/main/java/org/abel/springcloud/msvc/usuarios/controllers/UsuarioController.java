@@ -38,14 +38,13 @@ public class UsuarioController {
     //@ResponseStatus(HttpStatus.CREATED)
     public ResponseEntity<?> crear(@Valid @RequestBody Usuario usuario, BindingResult result){
 
+        if(result.hasErrors()){
+            return Validar(result);
+        }
         if(!usuario.getEmail().isEmpty() && service.obtenerEmail(usuario.getEmail()).isPresent()){
             return ResponseEntity.badRequest()
                     .body(Collections
                             .singletonMap("mensaje","ya existe un usuario con ese email"));
-        }
-
-        if(result.hasErrors()){
-            return Validar(result);
         }
         return ResponseEntity.status(HttpStatus.CREATED).body(service.guardar(usuario));
     }
