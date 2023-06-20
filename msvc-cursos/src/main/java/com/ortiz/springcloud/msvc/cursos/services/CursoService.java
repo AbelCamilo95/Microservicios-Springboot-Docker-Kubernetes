@@ -1,6 +1,6 @@
 package com.ortiz.springcloud.msvc.cursos.services;
 
-import com.ortiz.springcloud.msvc.cursos.entity.Curso;
+import com.ortiz.springcloud.msvc.cursos.models.entity.Curso;
 
 import java.util.List;
 import java.util.Optional;

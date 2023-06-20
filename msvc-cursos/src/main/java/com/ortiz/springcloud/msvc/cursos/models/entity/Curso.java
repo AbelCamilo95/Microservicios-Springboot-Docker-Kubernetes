@@ -1,5 +1,6 @@
-package com.ortiz.springcloud.msvc.cursos.entity;
+package com.ortiz.springcloud.msvc.cursos.models.entity;
 
+import com.ortiz.springcloud.msvc.cursos.models.Usuario;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotEmpty;
 
@@ -22,13 +23,18 @@ public class Curso {
     @JoinColumn(name = "curso_id")
     private List<CursoUsuario> cursoUsuarios;
 
+    @Transient
+    private List<Usuario> usuarios;
+
+    public Curso() {
+        cursoUsuarios = new ArrayList<>();
+        usuarios = new ArrayList<>();
+    }
+
     public String getNombre() {
         return nombre;
     }
 
-    public Curso() {
-        cursoUsuarios = new ArrayList<>();
-    }
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
@@ -56,5 +62,13 @@ public class Curso {
 
     public void setCursoUsuarios(List<CursoUsuario> cursoUsuarios) {
         this.cursoUsuarios = cursoUsuarios;
+    }
+
+    public List<Usuario> getUsuarios() {
+        return usuarios;
+    }
+
+    public void setUsuarios(List<Usuario> usuarios) {
+        this.usuarios = usuarios;
     }
 }

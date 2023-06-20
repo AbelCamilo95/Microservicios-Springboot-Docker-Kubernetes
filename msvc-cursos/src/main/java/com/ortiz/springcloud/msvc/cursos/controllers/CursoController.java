@@ -1,6 +1,6 @@
 package com.ortiz.springcloud.msvc.cursos.controllers;
 
-import com.ortiz.springcloud.msvc.cursos.entity.Curso;
+import com.ortiz.springcloud.msvc.cursos.models.entity.Curso;
 import com.ortiz.springcloud.msvc.cursos.services.CursoService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
