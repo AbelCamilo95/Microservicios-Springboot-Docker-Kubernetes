@@ -1,6 +1,7 @@
 package com.ortiz.springcloud.msvc.cursos.models.entity;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.*;
 
 @Entity
 @Table(name="cursos_usuarios")

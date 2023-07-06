@@ -1,5 +1,6 @@
 package com.ortiz.springcloud.msvc.cursos.services;
 
+import com.ortiz.springcloud.msvc.cursos.clients.UsuarioClientRest;
 import com.ortiz.springcloud.msvc.cursos.models.Usuario;
 import com.ortiz.springcloud.msvc.cursos.models.entity.Curso;
 import com.ortiz.springcloud.msvc.cursos.repositories.CursoRepository;
@@ -14,6 +15,9 @@ import java.util.Optional;
 public class CursoServiceImpl implements CursoService{
     @Autowired
     private CursoRepository repository;
+
+    @Autowired
+    private UsuarioClientRest client;
     @Override
     @Transactional(readOnly = true)
     public List<Curso> listar() {
