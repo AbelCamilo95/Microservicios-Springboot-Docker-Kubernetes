@@ -12,5 +12,7 @@ public interface UsuarioService {
     Usuario guardar(Usuario usuario);
     void eliminar (Long id);
 
+    List<Usuario> listarPorids(Iterable<Long> ids);
+
     Optional<Usuario> obtenerEmail (String email);
 }

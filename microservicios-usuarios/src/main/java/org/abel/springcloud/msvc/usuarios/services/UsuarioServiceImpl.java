@@ -1,6 +1,7 @@
 package org.abel.springcloud.msvc.usuarios.services;
 
 
+import org.abel.springcloud.msvc.usuarios.client.CursoClienteRest;
 import org.abel.springcloud.msvc.usuarios.models.entity.Usuario;
 import org.abel.springcloud.msvc.usuarios.repositories.UsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,6 +16,11 @@ public class UsuarioServiceImpl implements UsuarioService
 {
     @Autowired
     private UsuarioRepository repository;
+
+    @Autowired
+    private CursoClienteRest client;
+
+
     @Override
     @Transactional(readOnly = true)
     public List<Usuario> listar() {
@@ -37,6 +43,12 @@ public class UsuarioServiceImpl implements UsuarioService
     @Transactional
     public void eliminar(Long id) {
         repository.deleteById(id);
+        client.eliminarCursoUsuarioPorId(id);
+    }
+
+    @Override
+    public List<Usuario> listarPorids(Iterable<Long> ids) {
+        return (List<Usuario>) repository.findAllById(ids);
     }
 
     @Override
